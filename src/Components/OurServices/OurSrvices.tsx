@@ -1,35 +1,26 @@
+import { useStudio } from '@/context/StudioContext';
 import styles from '../../styles/OurServices.module.scss';
+import services from '../../Info/services.json';
+
 
 const OurServices = () => {
+  const { studio } = useStudio();
+  const isLavandaRed = studio === "lavanda_red";
+
   return (
-    <div className={styles['ourServices']}>
-      <h1 className={styles['ourServices-title']}>
+    <div className={styles.ourServices}>
+      <h1 className={`${styles['ourServices-title']} ${isLavandaRed ? styles['ourServices-title_red'] : ''}`}>
         З нашою студією Lavanda ви отримаєте
       </h1>
-      <div className={styles['ourServices-introduce']}>
-        <h1>Заняття з повітряної гімнастики</h1>
-        <p>Початківці можуть ознайомитися з основами повітряної гімнастики на шовках. Наші інструктори забезпечують безпечне та веселе навчальне середовище.</p>
-      </div>
-      <div className={styles['ourServices-advanced']}>
-        <h1>Класи з поглибленими техніками</h1>
-        <p>Досвідчені учні можуть оволодіти поглибленими навичками повітряної гімнастики. Ми зосереджуємося на складних рухах та техніках.</p>
-      </div>
-      <div className={styles['ourServices-training']}>
-        <h1>Тренування на гнучкість та силу</h1>
-        <p>Покращуйте свою практику за допомогою спеціальних занять для підвищення гнучкості та сили. Підходить для всіх рівнів підготовки.</p>
-      </div>
-      <div className={styles['ourServices-kids']}>
-        <h1>Заняття для дітей різного віку</h1>
-        <p>В нашій студії завжди є місця в групи дітей різного віку. Наші тренери слідкують за прогресом учнів та створюють позитивний настрій на заняттях.</p>
-      </div>
-      <div className={styles['ourServices-competition']}>
-        <h1>Участь в професійних змаганнях</h1>
-        <p>Участь в змаганнях та творчих конкурсах - це зажди додаткова мотивація для учнів в нашій студії. Що допомогає нашим учням вдосконалюватися та набиратися досвіду.</p>
-      </div>
-      <div className={styles['ourServices-concert']}>
-        <h1>Постановка творчих номерів</h1>
-        <p>В нашій студії є можливість замовити будь-який творчий номер для будь-якої події: конкурс, концерт, шкільний виступ тощо.</p>
-      </div>
+
+      {services.map(({ title, text, className }, index) => (
+        <div key={index} className={`${styles[className]} ${styles["ourServices-section"]}`}>
+          <h1 className={`${styles["ourServices-section-title"]} ${isLavandaRed ? styles["ourServices-section-title_red"] : ''}`}>
+            {title}
+          </h1>
+          <p>{text}</p>
+        </div>
+      ))}
     </div>
   );
 };

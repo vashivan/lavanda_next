@@ -24,8 +24,12 @@
     opacity: 0.8;
 
     @media (min-width: 760px) {
-      grid-column: 1/4;
+      grid-column: 1/5;
       font-size: 22px;
+    }
+
+    &_red {
+      color: rgb(189, 6, 6);
     }
   }
 
@@ -67,7 +71,7 @@
 
     @media (min-width: 760px) {
       grid-column: 5/-1;
-      grid-row: 1/4;
+      grid-row: 2/4;
 
       max-height: 350px;
     }
@@ -97,7 +101,7 @@
 
     @media (min-width: 760px) {
       align-self: flex-end;
-      grid-column: 1/-1;
+      grid-column: 1/4;
       grid-row: 5;
     }
 
@@ -108,108 +112,200 @@
       scale: (1.02);
       transition: 0.4s;
     }
+
+    &_red {
+      color: rgb(189, 6, 6);
+      border-color: rgb(189, 6, 6);
+
+      &:hover {
+        background-color: rgb(189, 6, 6);
+      }
+    }
   }
 }
 
 
-.modal {
+// .modal {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   background-color: rgba(0, 0, 0, 0.5);
+//   opacity: 0;
+//   transform: scale(0.8);
+//   transition: opacity 0.4s ease, transform 0.4s ease;
+
+//   overflow: scroll;
+
+//   &-footer {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//   }
+
+//   &-button {
+//     font: inherit;
+//     padding: 15px;
+//     border-style: solid;
+//     border-radius: 35px;
+//     border-color: #4C266A;
+//     background: transparent;
+//     border-width: 1px;
+//     cursor: pointer;
+
+//     width: 50%;
+//     align-self: center;
+
+//     color: #4C266A;
+//     font-weight: 500;
+
+//     transition: 0.4s;
+
+//     &:hover {
+//       background-color: #4C266A;
+//       color: #ffedff;
+//       opacity: 0.6;
+//       scale: (1.05);
+//       transition: 0.4s;
+//     }
+//   }
+
+//   &-show {
+//     opacity: 1;
+//     transform: scale(1);
+//     overflow: scroll;
+//     transition: all 0.4s;
+//   }
+
+//   &-content {
+//     text-align: center;
+//     background-color: #ffedff;
+//     padding: 10px 10px;
+//     border-radius: 15px;
+//     margin: 15px;
+
+//     line-height: 1.5rem;
+
+
+
+//     &_title{
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//       font-weight: 900;
+//     }
+
+//     &_body {
+//       display: flex;
+//       flex-direction: column;
+//       justify-content: center;
+//       align-items: center;
+
+//       margin-top: 35px;
+
+//       &_participant {
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: center;
+//         align-items: center;
+
+//         margin-top: 35px;
+
+//         &_title {
+//           margin-bottom: 0;
+//         }
+
+//         &_text {
+//          margin-bottom: 10px;
+//         }
+//       }
+//     }
+//   }
+// }
+
+.modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
+  /* Центрування по вертикалі */
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  transform: scale(0.8);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  /* Центрування по горизонталі */
+  z-index: 2;
+  overflow: auto;
+  /* Прокрутка тільки в межах модального вікна */
+  padding: 15px;
+}
 
-  overflow: scroll;
+.modalContent {
+  position: relative;
+  background: #ffedff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+  max-width: 90%;
+  /* Зменшення ширини для мобільних пристроїв */
+  max-height: 90%;
+  /* Встановлення максимальної висоти */
+  overflow-y: auto;
+  /* Дозвіл прокрутки, якщо контент перевищує висоту */
+}
 
-  &-footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.modalCloseButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #4c266a;
+
+  &:hover {
+    color: #ff66ff;
+  }
+}
+
+.modalTitle {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.modalBody {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalParticipant {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
   }
 
-  &-button {
-    font: inherit;
-    padding: 15px;
-    border-style: solid;
-    border-radius: 35px;
-    border-color: #4C266A;
-    background: transparent;
-    border-width: 1px;
-    cursor: pointer;
-
-    width: 50%;
-    align-self: center;
-
-    color: #4C266A;
-    font-weight: 500;
-
-    transition: 0.4s;
-
-    &:hover {
-      background-color: #4C266A;
-      color: #ffedff;
-      opacity: 0.6;
-      scale: (1.05);
-      transition: 0.4s;
-    }
-  }
-
-  &-show {
+  to {
     opacity: 1;
     transform: scale(1);
-    overflow: scroll;
-    transition: all 0.4s;
-  }
-
-  &-content {
-    text-align: center;
-    background-color: #ffedff;
-    padding: 10px 10px;
-    border-radius: 15px;
-    margin: 15px;
-
-    line-height: 1.5rem;
-
-
-
-    &_title{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-weight: 900;
-    }
-
-    &_body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      margin-top: 35px;
-
-      &_participant {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        margin-top: 35px;
-
-        &_title {
-          margin-bottom: 0;
-        }
-
-        &_text {
-         margin-bottom: 10px;
-        }
-      }
-    }
   }
 }

@@ -11,6 +11,10 @@
     grid-template-columns: repeat(4, 1fr);
   }
 
+  &_red {
+    background-color: rgb(189, 6, 6);
+  }
+
 
 
   &-navbar {

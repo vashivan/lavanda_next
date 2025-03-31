@@ -45,3 +45,5 @@ export type NewsItem = {
   participants: Participant[];
   message: string;
 };
+
+export type Studio = "lavanda_red" | "lavanda_purple";

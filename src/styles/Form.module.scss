@@ -23,6 +23,10 @@
 
     grid-column: 1/-1;
 
+    &_red {
+      color: rgb(189, 6, 6);
+    }
+
     @media (min-width: 760px) {
       font-weight: 700;
       font-size: 32px;
@@ -149,8 +153,29 @@
         }
       }
 
+      &_red {
+        color: rgb(189, 6, 6);
+        border-color:rgb(189, 6, 6);
+    
+        &:hover {
+          background-color: rgb(189, 6, 6);
+        }
+      }
+
       &_reset {
+        background: transparent;
+        border-width: 1px;
         animation: appear 0.7s ease-in-out;
+
+        &_red {
+          color: rgb(189, 6, 6);
+          border-color:rgb(189, 6, 6);
+      
+          &:hover {
+            background-color: rgb(189, 6, 6);
+            background-color: rgb(189, 6, 6);
+          }
+        }
       }
     }
   }
@@ -192,6 +217,14 @@
       background-position: 50% 30%;
     }
   }
+}
+
+.form-section_form_red input {
+  border-bottom: 2px solid rgb(189, 6, 6);
+}
+
+.form-section_form_red textarea {
+  border: 2px solid rgb(189, 6, 6);
 }
 
 @keyframes notification {

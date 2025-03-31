@@ -3,8 +3,11 @@ import { FormData } from "../../Utils/Types";
 import styles from '../../styles/Form.module.scss';
 import axios from 'axios';
 import MiniLoader from "../MiniLoader/MiniLoader";
+import { useStudio } from "@/context/StudioContext";
 
 const Form = () => {
+  const { studio } = useStudio();
+  const isLavandaRed = studio === "lavanda_red";
   const [errorMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -83,11 +86,18 @@ const Form = () => {
           {errorMessage}
         </div>
       )}
-      <h1 className={styles['form-section_title']}>Зворотній зв'язок</h1>
+      <h1 className={`${styles['form-section_title']}
+        ${isLavandaRed ? styles['form-section_title_red'] : ''}`}
+      >
+        Зворотній зв'язок
+      </h1>
       <p className={styles['form-section_text']}>
         Якщо у вас виникли питання або пропозиції, будь ласка, залиште заявку з вашим повідомленням. Наш менеджер зв'яжеться з вами якнайшвидше, щоб надати необхідну інформацію та допомогу. Ми завжди раді допомогти вам і відповісти на всі ваші запитання. Дякуємо, що обрали нашу студію!
       </p>
-      <form className={styles['form-section_form']} onSubmit={handleSubmit}>
+      <form className={`${styles['form-section_form']} 
+        ${isLavandaRed ? styles['form-section_form_red'] : ''}`}
+        onSubmit={handleSubmit}
+      >
         <input
           type="text"
           name="name"
@@ -130,7 +140,8 @@ const Form = () => {
         </label>
         <button
           type="submit"
-          className={styles['form-section_form_btn']}
+          className={`${styles['form-section_form_btn']}
+            ${isLavandaRed ? styles['form-section_form_btn_red'] : ''}`}
           disabled={!isFormValid || isLoading}
         >
           {isLoading ? <MiniLoader /> : 'Надіслати'}
@@ -138,7 +149,10 @@ const Form = () => {
 
         {formData.message && (
           <button
-            className={styles['form-section_form_btn form-section_form_btn_reset']}
+          className={`${styles['form-section_form_btn']} 
+            ${styles['form-section_form_btn_reset']}
+            ${isLavandaRed ? styles['form-section_form_btn_reset_red'] : ''}
+            `}
             type="reset"
             onClick={resetForm}
           >

@@ -55,6 +55,10 @@
     font-size: 28px;
     color: #7B5295;
     opacity: 0.9;
+
+    &_red {
+      color: rgb(189, 6, 6);
+    }
   }
 
   &-slogan {
@@ -95,6 +99,15 @@
       opacity: 0.6;
       scale: (1.05);
       transition: 0.4s;
+    }
+
+    &_red {
+      color: rgb(189, 6, 6);
+      border-color:rgb(189, 6, 6);
+  
+      &:hover {
+        background-color: rgb(189, 6, 6);
+      }
     }
   }
 }

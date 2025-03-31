@@ -2,14 +2,16 @@
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   gap: 25px;
-
-  margin: 0;
-  margin-bottom: 50px;
-
+  margin: 0 0 50px 0;
   position: relative;
 
-  @media (min-width:760px) {
+  @media (min-width: 760px) {
+    grid-template-columns: repeat(8, 1fr);
     margin-bottom: 100px;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(9, 1fr);
   }
 
   &::after {
@@ -40,187 +42,37 @@
     grid-column: 1/-1;
     color: #7B5295;
     opacity: 0.9;
-
     margin: 0;
+
+    &_red {
+      color: rgb(189, 6, 6);
+    }
   }
 
-  &-introduce {
+  &-section {
     grid-column: 1/-1;
     margin: 0;
 
     @media (min-width: 760px) {
-      grid-column: 1/5;
+      grid-column: span 4;
     }
 
     @media (min-width: 1200px) {
-      grid-column: 1/4;
+      grid-column: span 3;
     }
 
-    &>h1 {
+    &-title {
       text-align: center;
       font-size: 24px;
       color: #7B5295;
       opacity: 0.9;
-    }
 
-    &>p {
-      text-align: center;
-      font-size: 18px;
-      opacity: 0.8;
-
-      @media (min-width: 760px) {
-        text-align: justify;
-        font-size: 20px;
+      &_red {
+        color: rgb(189, 6, 6);
       }
     }
-  }
 
-  &-advanced {
-    grid-column: 1/-1;
-    margin: 0;
-
-    @media (min-width: 760px) {
-      grid-column: 6/-1;
-    }
-    
-    @media (min-width: 1200px) {
-      grid-column: 4/7;
-    }
-
-    &>h1 {
-      text-align: center;
-      font-size: 24px;
-      color: #7B5295;
-      opacity: 0.9;
-    }
-
-    &>p {
-      text-align: center;
-      font-size: 18px;
-      opacity: 0.8;
-
-      @media (min-width: 760px) {
-        text-align: justify;
-        font-size: 20px;
-      }
-    }
-  }
-
-  &-training {
-    grid-column: 1/-1;
-    margin: 0;
-
-    @media (min-width: 760px) {
-      grid-column: 1/5;
-    }
-
-    @media (min-width: 1200px) {
-      grid-column: 7/-1;
-    }
-
-    &>h1 {
-      text-align: center;
-      font-size: 24px;
-      color: #7B5295;
-      opacity: 0.9;
-    }
-
-    &>p {
-      text-align: center;
-      font-size: 18px;
-      opacity: 0.8;
-
-      @media (min-width: 760px) {
-        text-align: justify;
-        font-size: 20px;
-      }
-    }
-  }
-
-  &-kids {
-    grid-column: 1/-1;
-    margin: 0;
-
-    @media (min-width: 760px) {
-      grid-column: 6/-1;
-    }
-
-    @media (min-width: 1200px) {
-      grid-column: 1/4;
-    }
-
-    &>h1 {
-      text-align: center;
-      font-size: 24px;
-      color: #7B5295;
-      opacity: 0.9;
-    }
-
-    &>p {
-      text-align: center;
-      font-size: 18px;
-      opacity: 0.8;
-
-      @media (min-width: 760px) {
-        text-align: justify;
-        font-size: 20px;
-      }
-    }
-  }
-
-  &-competition {
-    grid-column: 1/-1;
-    margin: 0;
-
-    @media (min-width: 760px) {
-      grid-column: 1/5;
-    }
-
-    @media (min-width: 1200px) {
-      grid-column: 4/7;
-    }
-
-    &>h1 {
-      text-align: center;
-      font-size: 24px;
-      color: #7B5295;
-      opacity: 0.9;
-    }
-
-    &>p {
-      text-align: center;
-      font-size: 18px;
-      opacity: 0.8;
-
-      @media (min-width: 760px) {
-        text-align: justify;
-        font-size: 20px;
-      }
-    }
-  }
-
-  &-concert {
-    grid-column: 1/-1;
-    margin: 0;
-
-    margin-bottom: 50px;
-
-    @media (min-width: 760px) {
-      grid-column: 6/-1;
-    }
-
-    @media (min-width: 1200px) {
-      grid-column: 7/-1;
-    }
-
-    &>h1 {
-      text-align: center;
-            font-size: 24px;
-      color: #7B5295;
-      opacity: 0.9;
-    }
-
-    &>p {
+    & > p {
       text-align: center;
       font-size: 18px;
       opacity: 0.8;

@@ -3,14 +3,38 @@ import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group';
 import Menu from '../Menu/Menu';
 import styles from '../../styles/Navbar.module.scss';
+import { useStudio } from '@/context/StudioContext';
+import { useAuth } from '@/context/AuthContext';
 
-const Navbar: React.FC = () => {
+type Props = {
+  handleLogout: () => void;
+}
+
+const Navbar: React.FC<Props> = ({ handleLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const { studio, toggleStudio } = useStudio();
+  const { user } = useAuth();
+  const isLavandaRed = studio === "lavanda_red";
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  // const handleLogout = async () => {
+  //   try {
+  //     const response = await fetch("/api/auth/logout", { method: "POST" });
+  //     if (!response.ok) throw new Error("Помилка виходу");
+
+  //     localStorage.removeItem("token");
+
+  //     // Опціонально: редірект на головну сторінку
+  //     window.location.href = "/";
+  //   } catch (error) {
+  //     console.error("Помилка при виході:", error);
+  //   }
+  // };
+
 
   return (
     <nav className={styles.navbar}>
@@ -19,29 +43,99 @@ const Navbar: React.FC = () => {
       </Link>
       <ul className={styles.navbarList}>
         <li className={styles.navbarListItem}>
-          <Link href="/about">Про студію</Link>
+          <Link
+            className={isLavandaRed ? styles.navbarListItem_link_red : ""}
+            href="/"
+          >
+            {user?.role === 'admin' ? 'Cписок учнів' : 'Головна сторінка'}
+          </Link>
         </li>
-        <li className={styles.navbarListItem}>
+        {/* <li className={styles.navbarListItem}>
           <Link href="/price">Ціни</Link>
-        </li>
-        <li className={styles.navbarListItem}>
+        </li> */}
+        {/* <li className={styles.navbarListItem}>
           <Link href="/schedulePage">Розклад занять</Link>
-        </li>
+        </li> */}
+        {user?.role === "admin" && (
+          <li className={styles.navbarListItem}>
+            <Link
+              className={isLavandaRed ? styles.navbarListItem_link_red : ""}
+              href="/createUser"
+            >
+              Реєстрація клієнта
+            </Link>
+          </li>
+        )}
+        {user?.role === "admin" ? (
+          <li className={styles.navbarListItem}>
+            <Link
+              className={isLavandaRed ? styles.navbarListItem_link_red : ""}
+              href="/adminBookPage"
+            >
+              Запис на заняття
+            </Link>
+          </li>
+        ) : (
         <li className={styles.navbarListItem}>
-          <Link href="/trainersPage">Наші тренери</Link>
+          <Link
+            className={isLavandaRed ? styles.navbarListItem_link_red : ""}
+            href="/bookPage"
+          >
+            Запис на заняття
+          </Link>
         </li>
-        <li className={styles.navbarListItem}>
-          <Link href="/newsPage">Наші новини</Link>
-        </li>
-        <li className={styles.navbarListItem}>
+        )}
+
+        {/* <li className={styles.navbarListItem}>
+          <Link
+            className={isLavandaRed ? styles.navbarListItem_link_red : ""}
+            href="/trainersPage"
+          >
+            Наші тренери
+          </Link>
+        </li> */}
+        {/* <li className={styles.navbarListItem}>
+          <Link
+            className={isLavandaRed ? styles.navbarListItem_link_red : ""}
+            href="/newsPage"
+          >
+            Наші новини
+          </Link>
+        </li> */}
+        {/* <li className={styles.navbarListItem}>
           <Link href="/registrationPage">Запис на заняття</Link>
+        </li> */}
+        {/* {user?.role !== "admin" && (
+          <li>
+            <button
+              className={`${styles.toggle_studio_navbar} ${isLavandaRed ? styles.toggle_studio_navbar_red : ''}`}
+              onClick={() => {
+                toggleStudio();
+              }}
+            >
+              {isLavandaRed ?
+                (<p>Змінити на Lavanda Purple</p>)
+                :
+                (<p>Змінити на Lavanda Red</p>)
+              }
+            </button>
+          </li>
+        )} */}
+        <li>
+          <button onClick={handleLogout}>Закінчити сесію</button>
         </li>
       </ul>
-      <button
-        className={styles.navbarMenuBtn}
-        onClick={toggleMenu}
-      >
-        {/* Icon or text for menu button */}
+      <button className={styles.navbarMenuBtn} onClick={toggleMenu}>
+        <svg
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className={isLavandaRed ? styles.navbarMenuBtn_icon_red : styles.navbarMenuBtn_icon}
+        >
+          <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        </svg>
       </button>
 
       <div ref={menuRef} className={`${styles['menu']} ${isOpen ? styles['open'] : ''}`}>

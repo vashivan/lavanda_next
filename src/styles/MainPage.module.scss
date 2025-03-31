@@ -1,10 +1,186 @@
-.mainPage {
-  animation: appear 0.7s ease;
-  padding-inline: 35px;
-  
-  @media (min-width: 1200px) {
-    padding-inline: 50px;
+.profileContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+
+  padding: 20px;
+}
+
+.profileCard {
+  padding-inline: 2rem;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #7B5295;
+
+  &_red {
+    color: rgb(189, 6, 6);
   }
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 18px;
+
+  &_editBtn {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+}
+
+.profileInfo p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #555;
+}
+
+.profileInfo svg {
+  color: #6a11cb;
+}
+
+.logoutBtn {
+  margin-top: 20px;
+  background: #7B5295;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &_red {
+    background: rgb(189, 6, 6);
+  }
+}
+
+.logoutBtn:hover {
+  opacity: 0.8;
+}
+
+.profileInfo_input {
+  width: 50%;
+  height: 2rem;
+  padding-inline: 15px;
+  border: none;
+  border-radius: 15px;
+  background: transparent;
+  border-bottom: gray 1px solid;
+  line-height: 2rem;
+  font: inherit;
+  font-size: 16px;
+}
+
+.profileInfo_saveBtn {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.admin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  padding-inline: 15px;
+
+  &>h2 {
+    display: flex;
+    text-align: center;
+    color: #7B5295;
+  }
+}
+
+.page_container {
+  padding-inline: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+}
+
+.students_container {
+  padding-inline: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: 1000px) {
+    display: grid;
+    grid-template-columns: (repeat(2, 1fr));
+    column-gap: 30px;
+    row-gap: 30px;
+  }
+
+  &_search {
+    width: 80%;
+    height: 2rem;
+    padding-inline: 15px;
+    border: none;
+    border-radius: 15px;
+    background: transparent;
+    border-bottom: gray 1px solid;
+    line-height: 2rem;
+    font: inherit;
+    font-size: 16px;
+  }
+}
+
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 50%;
+
+  input {
+    width: 100%;
+    padding: 8px 12px 8px 40px; // додаємо відступ для іконки
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    border-radius: 35px;
+  }
+
+  .search_icon {
+    position: absolute;
+    left: 10px;
+    color: #999;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.loader_container {
+  display: flex;
+  padding: 50px;
+  align-items: center;
+  justify-content: center;
 }
 
 @keyframes appear {

@@ -4,12 +4,15 @@ import styles from '../../styles/TrainersInfo.module.scss';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Carousel from './Carousel';
+import { useStudio } from '@/context/StudioContext';
 
 type Props = {
   trainer: Trainer
 }
 
 const TrainerInfo: React.FC<Props> = ({ trainer }) => {
+  const { studio } = useStudio();
+  const isLavandaRed = studio === "lavanda_red";
   const { name, surname, imgSrc, info, images, intro } = trainer;
   const [showModal, setShowModal] = useState(false);
 
@@ -24,7 +27,10 @@ const TrainerInfo: React.FC<Props> = ({ trainer }) => {
         className={styles['trainerInfo__image']}
       />
       <div className={styles['trainerInfo__details']}>
-        <h2 className={styles['trainerInfo__name']}>{name} {surname}</h2>
+        <h2 className={`${styles['trainerInfo__name']} 
+          ${isLavandaRed ? styles['trainerInfo__name_red'] : ''}`}>
+          {name} {surname}
+        </h2>
         <p className={styles['trainerInfo__years']}>Досвід: {info.years} р.</p>
         <p className={styles['trainerInfo__study']}>Освіта: {info.study}</p>
         <p className={styles['trainerInfo__accents']}>Напрямки: {info.accents}</p>
@@ -49,7 +55,8 @@ const TrainerInfo: React.FC<Props> = ({ trainer }) => {
             </Modal.Body>
             <Modal.Footer className={styles['modal-footer']}>
               <Button
-                className={styles['modal-button']}
+                className={`${styles['modal-button']}
+              ${isLavandaRed ? styles['modal-button_red'] : ""}`}
                 onClick={handleClose}
               >
                 Закрити
@@ -59,7 +66,8 @@ const TrainerInfo: React.FC<Props> = ({ trainer }) => {
         </Modal>
       </div>
       <Button
-        className={styles['trainerInfo-button']} 
+        className={`${styles['trainerInfo-button']}
+          ${isLavandaRed ? styles['trainerInfo-button_red'] : ''}`}
         onClick={handleShow}
       >
         Детальніше

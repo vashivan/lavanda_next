@@ -1,0 +1,51 @@
+.userCard {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 2rem;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 80%;
+
+  justify-content: stretch;
+
+  margin-bottom: 15px;
+
+  &>p {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  &_input {
+    width: 50%;
+    height: 2rem;
+    padding-inline: 15px;
+    border: none;
+    border-radius: 15px;
+    background: transparent;
+    border-bottom: gray 1px solid;
+    line-height: 2rem;
+    font: inherit;
+    font-size: 16px;
+  }
+
+  &_saveBtn {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+  }
+
+  &_editBtn {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+}
