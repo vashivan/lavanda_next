@@ -2,8 +2,8 @@ import mysql from 'mysql2/promise';
 
 export const db = mysql.createPool({
   host: "srv1509.hstgr.io",
-  user: "u709554459_lavanda",
-  password: "lavandaDATA1",
+  user: procces.env.DB_USER,
+  password: procces.env.DB_PASSWORD,
   database: "u709554459_schedule",
   waitForConnections: true,
   connectionLimit: 10,

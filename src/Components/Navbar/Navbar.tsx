@@ -5,6 +5,7 @@ import Menu from '../Menu/Menu';
 import styles from '../../styles/Navbar.module.scss';
 import { useStudio } from '@/context/StudioContext';
 import { useAuth } from '@/context/AuthContext';
+import { LogOut } from 'lucide-react';
 
 type Props = {
   handleLogout: () => void;
@@ -13,28 +14,13 @@ type Props = {
 const Navbar: React.FC<Props> = ({ handleLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-  const { studio, toggleStudio } = useStudio();
+  const { studio } = useStudio();
   const { user } = useAuth();
   const isLavandaRed = studio === "lavanda_red";
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-  };
-
-  // const handleLogout = async () => {
-  //   try {
-  //     const response = await fetch("/api/auth/logout", { method: "POST" });
-  //     if (!response.ok) throw new Error("Помилка виходу");
-
-  //     localStorage.removeItem("token");
-
-  //     // Опціонально: редірект на головну сторінку
-  //     window.location.href = "/";
-  //   } catch (error) {
-  //     console.error("Помилка при виході:", error);
-  //   }
-  // };
-
+  };  
 
   return (
     <nav className={styles.navbar}>
@@ -50,12 +36,6 @@ const Navbar: React.FC<Props> = ({ handleLogout }) => {
             {user?.role === 'admin' ? 'Cписок учнів' : 'Головна сторінка'}
           </Link>
         </li>
-        {/* <li className={styles.navbarListItem}>
-          <Link href="/price">Ціни</Link>
-        </li> */}
-        {/* <li className={styles.navbarListItem}>
-          <Link href="/schedulePage">Розклад занять</Link>
-        </li> */}
         {user?.role === "admin" && (
           <li className={styles.navbarListItem}>
             <Link
@@ -85,44 +65,10 @@ const Navbar: React.FC<Props> = ({ handleLogout }) => {
           </Link>
         </li>
         )}
-
-        {/* <li className={styles.navbarListItem}>
-          <Link
-            className={isLavandaRed ? styles.navbarListItem_link_red : ""}
-            href="/trainersPage"
-          >
-            Наші тренери
-          </Link>
-        </li> */}
-        {/* <li className={styles.navbarListItem}>
-          <Link
-            className={isLavandaRed ? styles.navbarListItem_link_red : ""}
-            href="/newsPage"
-          >
-            Наші новини
-          </Link>
-        </li> */}
-        {/* <li className={styles.navbarListItem}>
-          <Link href="/registrationPage">Запис на заняття</Link>
-        </li> */}
-        {/* {user?.role !== "admin" && (
-          <li>
-            <button
-              className={`${styles.toggle_studio_navbar} ${isLavandaRed ? styles.toggle_studio_navbar_red : ''}`}
-              onClick={() => {
-                toggleStudio();
-              }}
-            >
-              {isLavandaRed ?
-                (<p>Змінити на Lavanda Purple</p>)
-                :
-                (<p>Змінити на Lavanda Red</p>)
-              }
-            </button>
-          </li>
-        )} */}
         <li>
-          <button onClick={handleLogout}>Закінчити сесію</button>
+          <button className={styles.end_session} onClick={handleLogout}>
+          <LogOut size={20} /> Вийти
+          </button>
         </li>
       </ul>
       <button className={styles.navbarMenuBtn} onClick={toggleMenu}>

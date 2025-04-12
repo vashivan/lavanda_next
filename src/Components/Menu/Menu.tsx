@@ -3,6 +3,7 @@ import Link from 'next/link';
 import styles from '../../styles/Menu.module.scss';
 import { useStudio } from '@/context/StudioContext';
 import { useAuth } from '@/context/AuthContext';
+import { LogOut } from 'lucide-react';
 
 interface Props {
   isOpen: boolean;
@@ -101,10 +102,12 @@ export const Menu: React.FC<Props> = ({ isOpen, toggleMenu }) => {
           </li>
         )}
         <li>
-          <button onClick={handleLogout}>Закінчити сесію</button>
+          <button className={styles.end_session} onClick={handleLogout}>
+          <LogOut size={20} /> Вийти
+          </button>
         </li>
       </ul>
-      <button
+      {/* <button
         className={`${styles.toggle_studio} ${isLavandaRed ? styles.toggle_studio_red : ''}`}
         onClick={() => {
           toggleStudio();
@@ -116,7 +119,7 @@ export const Menu: React.FC<Props> = ({ isOpen, toggleMenu }) => {
           :
           (<p>Змінити на Lavanda Red</p>)
         }
-      </button>
+      </button> */}
       <button className={`${styles['menu-button']} 
         ${isLavandaRed ? styles['menu-button_red'] : ''}`
       }

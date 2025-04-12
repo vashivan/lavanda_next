@@ -83,7 +83,7 @@ const UserCard: React.FC<Props> = ({ student }) => {
   };
 
   return (
-    <div className={styles.userCard}>
+    <div className={`${student.role === 'admin' ? styles.adminCard : styles.userCard}`}>
       {/* Ім"я */}
       <p>
         <User size={30} color={isLavandaRed ? "#FF416C" : "#7F7FD5"} />
@@ -104,7 +104,8 @@ const UserCard: React.FC<Props> = ({ student }) => {
             </button>
             <button
               className={styles.userCard_saveBtn}
-              onClick={handleCancel}>
+              onClick={handleCancel}
+            >
               <X color="red" />
             </button>
           </>

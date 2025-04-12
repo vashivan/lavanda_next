@@ -68,8 +68,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       port: 465,
       secure: true,
       auth: {
-        user: process.env.MAILER_USER,
-        pass: process.env.MAILER_PASSWORD,
+        user: process.env.NEXT_PUBLIC_MAILER_USER,
+        pass: process.env.NEXT_PUBLIC_MAILER_PASSWORD,
       }
     });
 
@@ -95,8 +95,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const titleColor = isLavandaRed ? "rgb(189, 6, 6)" : "#4C266A";
 
     const mailOptions = {
-      from: `"Lavanda Studio" <${process.env.MAILER_USER}>`,
-      to: process.env.MAILER_LAVANDA,
+      from: `"Lavanda Studio" <${process.env.NEXT_PUBLIC_MAILER_USER}>`,
+      to: process.env.NEXT_PUBLIC_MAILER_LAVANDA,
       subject: "Новий запис на заняття",
       html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: #f9f9f9;">

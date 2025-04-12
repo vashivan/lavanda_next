@@ -133,7 +133,7 @@ const MainPage: React.FC = () => {
         <div className={styles.search}>
           <span className={styles.search_icon}><Search /></span>
           <input
-            className={styles.students_container_search}
+            className={styles.students_search}
             type="text"
             placeholder="Пошук учня"
             value={search}

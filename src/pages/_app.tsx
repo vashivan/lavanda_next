@@ -40,7 +40,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, phone, password }), // Додано phone
       });
-  
+
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem('token', data.token);
@@ -94,7 +94,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       console.error("Помилка при виході:", error);
     }
   };
-  
+
   return (
     <>
       <Head>
@@ -104,15 +104,13 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
         <title>{title}</title>
       </Head>
-      {router.pathname === '/registrationPage' ? (
-        <RegistrationPage onRegister={handleRegister} />
-      ) : !isLoggedIn ? (
-        <StartPage loading={loading} onLogin={handleLogin} />
+      {!isLoggedIn ? (
+        <StartPage loading={loading} onLogin={handleLogin} setIsLoggedIn={setIsLoggedIn} />
       ) : (
         <AuthProvider>
           <StudioProvider>
             <Navbar handleLogout={handleLogout} />
-            <Component {...pageProps}/>
+            <Component {...pageProps} />
             <Footer />
           </StudioProvider>
         </AuthProvider>

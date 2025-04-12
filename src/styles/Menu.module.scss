@@ -136,3 +136,15 @@
     filter: brightness(0) saturate(100%) invert(22%) sepia(96%) saturate(200%) hue-rotate(350deg) brightness(95%) contrast(90%);
   }
 }
+
+.end_session {
+  font: inherit;
+  border: none;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 25px;
+  color: #7B5295;
+  font-weight: 700;
+  transition: all 0.4s;
+  cursor: pointer;
+}

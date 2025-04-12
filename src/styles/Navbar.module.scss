@@ -49,7 +49,7 @@
     text-decoration: none;
   }
 
-  color: #7B5295;
+  color: #4C266A;
   font-weight: 700;
   transition: all 0.4s;
 
@@ -169,5 +169,30 @@
     &:hover {
       background-color: rgb(189, 6, 6);
     }
+  }
+}
+
+.end_session {
+  font: inherit;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #4C266A;
+  font-size: 20px;
+  font-weight: 700;
+  transition: all 0.4s;
+
+  cursor: pointer;
+
+  &:hover {
+    color: #4C266A;
+    transform: scale(1.1);
+    opacity: 0.8;
   }
 }

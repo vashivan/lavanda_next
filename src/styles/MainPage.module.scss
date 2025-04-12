@@ -115,48 +115,50 @@
 }
 
 .page_container {
-  padding-inline: 15px;
+  padding-inline: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  width: 100%;
+  // width: 100%;
 }
 
 .students_container {
-  padding-inline: 15px;
+  padding-inline: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: fit-content;
+
 
   @media (min-width: 1000px) {
     display: grid;
-    grid-template-columns: (repeat(2, 1fr));
-    column-gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 70px;
     row-gap: 30px;
   }
+}
 
-  &_search {
-    width: 80%;
-    height: 2rem;
-    padding-inline: 15px;
-    border: none;
-    border-radius: 15px;
-    background: transparent;
-    border-bottom: gray 1px solid;
-    line-height: 2rem;
-    font: inherit;
-    font-size: 16px;
-  }
+.students_search {
+  width: 80%;
+  height: 2rem;
+  padding-inline: 15px;
+  border: none;
+  border-radius: 15px;
+  background: transparent;
+  border-bottom: gray 1px solid;
+  line-height: 2rem;
+  font: inherit;
+  font-size: 16px;
 }
 
 .search {
   position: relative;
   display: flex;
   align-items: center;
-  width: 50%;
+  width: 60%;
 
   input {
     width: 100%;
