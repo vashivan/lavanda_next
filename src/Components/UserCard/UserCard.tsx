@@ -1,9 +1,8 @@
 import { useStudio } from '@/context/StudioContext';
-import styles from '../../styles/UserCard.module.scss';
-import { LogOut, Mail, Phone, User, Wallet, PencilLine, Check, X } from 'lucide-react';
-import MiniLoader from '../MiniLoader/MiniLoader';
+import { Check, Mail, PencilLine, Phone, User, Wallet, X } from 'lucide-react';
 import { useState } from 'react';
-import { useAuth } from '@/context/AuthContext';
+import styles from '../../styles/UserCard.module.scss';
+import MiniLoader from '../MiniLoader/MiniLoader';
 
 interface User {
   id: string;
@@ -86,7 +85,7 @@ const UserCard: React.FC<Props> = ({ student }) => {
     <div className={`${student.role === 'admin' ? styles.adminCard : styles.userCard}`}>
       {/* Ім"я */}
       <p>
-        <User size={30} color={isLavandaRed ? "#FF416C" : "#7F7FD5"} />
+        <User size={25} color={"#7F7FD5"} />
         {editingField === "name" ? (
           <>
             <input
@@ -113,7 +112,7 @@ const UserCard: React.FC<Props> = ({ student }) => {
           <>
             <span>{student.name}</span>
             <button className={styles.userCard_editBtn} onClick={() => setEditingField("name")}>
-              <PencilLine color={isLavandaRed ? "#FF416C" : "#7F7FD5"} />
+              <PencilLine size={25}  color={"#7F7FD5"} />
             </button>
           </>
         )}
@@ -121,7 +120,7 @@ const UserCard: React.FC<Props> = ({ student }) => {
 
       {/* Телефон */}
       <p>
-        <Phone size={30} color={isLavandaRed ? "#FF416C" : "#7F7FD5"} />
+        <Phone size={25} color={"#7F7FD5"} />
         {editingField === "phone" ? (
           <>
             <input
@@ -151,7 +150,7 @@ const UserCard: React.FC<Props> = ({ student }) => {
               className={styles.userCard_editBtn}
               onClick={() => setEditingField("phone")}
             >
-              <PencilLine className={styles.userCard_editBtn} color={isLavandaRed ? "#FF416C" : "#7F7FD5"} />
+              <PencilLine size={25}  className={styles.userCard_editBtn} color={"#7F7FD5"} />
             </button>
           </>
         )}
@@ -159,7 +158,7 @@ const UserCard: React.FC<Props> = ({ student }) => {
 
       {/* Email */}
       <p>
-        <Mail size={30} color={isLavandaRed ? "#FF416C" : "#7F7FD5"} />
+        <Mail size={25} color={"#7F7FD5"} />
         {editingField === "email" ? (
           <>
             <input
@@ -189,7 +188,7 @@ const UserCard: React.FC<Props> = ({ student }) => {
               className={styles.userCard_editBtn}
               onClick={() => setEditingField("email")}
             >
-              <PencilLine className={styles.userCard_editBtn} color={isLavandaRed ? "#FF416C" : "#7F7FD5"} />
+              <PencilLine size={25} className={styles.userCard_editBtn} color={"#7F7FD5"} />
             </button>
           </>
         )}
@@ -197,7 +196,7 @@ const UserCard: React.FC<Props> = ({ student }) => {
 
       {/* Баланс занять */}
       <p>
-        <Wallet size={30} color={isLavandaRed ? "#FF416C" : "#7F7FD5"} />
+        <Wallet size={25} color={"#7F7FD5"} />
         {editingField === "availablecl" ? (
           <>
             <input
@@ -227,7 +226,7 @@ const UserCard: React.FC<Props> = ({ student }) => {
               className={styles.userCard_editBtn}
               onClick={() => setEditingField("availablecl")}
             >
-              <PencilLine className={styles.userCard_editBtn} color={isLavandaRed ? "#FF416C" : "#7F7FD5"} />
+              <PencilLine size={25} className={styles.userCard_editBtn} color={"#7F7FD5"} />
             </button>
           </>
         )}

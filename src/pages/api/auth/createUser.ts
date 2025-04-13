@@ -6,8 +6,8 @@ import jwt from "jsonwebtoken";
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") return res.status(405).json({ error: "Метод не дозволено" });
 
-  const { name, phone, email, password } = req.body;
-  if (!name || !phone || !email || !password) {
+  const { name, phone, email, password, role } = req.body;
+  if (!name || !phone || !email || !password || !role) {
     return res.status(400).json({ error: "Заповніть всі поля" });
   }
 
@@ -38,8 +38,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // Додаємо клієнта в базу
     await db.query(
-      "INSERT INTO StudentsList (student_name, student_phone, student_email, student_password, student_availablecl) VALUES (?, ?, ?, ?, ?)",
-      [name, phone, email, hashedPassword, 0]
+      "INSERT INTO StudentsList (student_name, student_phone, student_email, student_password, student_availablecl, role) VALUES (?, ?, ?, ?, ?, ?)",
+      [name, phone, email, hashedPassword, 0, role]
     );
 
     res.status(201).json({ message: "Клієнта зареєстровано" });

@@ -74,14 +74,14 @@
     transition: none;
   }
 
-  &_red {
-    color: rgb(189, 6, 6);
-    border-color: rgb(189, 6, 6);
+  // &_red {
+  //   color: rgb(189, 6, 6);
+  //   border-color: rgb(189, 6, 6);
 
-    &:hover {
-      background-color: rgb(189, 6, 6);
-    }
-  }
+  //   &:hover {
+  //     background-color: rgb(189, 6, 6);
+  //   }
+  // }
 }
 
 .navbar-nav {
@@ -102,9 +102,9 @@
   font-weight: 700;
   transition: all 0.4s;
 
-  &_red {
-    color: rgb(189, 6, 6);
-  }
+  // &_red {
+  //   color: rgb(189, 6, 6);
+  // }
 
   &:hover {
     transform: scale(1.1);
@@ -132,9 +132,9 @@
   color: #7B5295;
   font-weight: 700;
 
-  &_red {
-    filter: brightness(0) saturate(100%) invert(22%) sepia(96%) saturate(200%) hue-rotate(350deg) brightness(95%) contrast(90%);
-  }
+  // &_red {
+  //   filter: brightness(0) saturate(100%) invert(22%) sepia(96%) saturate(200%) hue-rotate(350deg) brightness(95%) contrast(90%);
+  // }
 }
 
 .end_session {

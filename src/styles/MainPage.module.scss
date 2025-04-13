@@ -23,9 +23,9 @@
   margin-bottom: 1rem;
   color: #7B5295;
 
-  &_red {
-    color: rgb(189, 6, 6);
-  }
+  // &_red {
+  //   color: rgb(189, 6, 6);
+  // }
 }
 
 .profileInfo {
@@ -66,9 +66,9 @@
   cursor: pointer;
   transition: background 0.3s ease;
 
-  &_red {
-    background: rgb(189, 6, 6);
-  }
+  // &_red {
+  //   background: rgb(189, 6, 6);
+  // }
 }
 
 .logoutBtn:hover {

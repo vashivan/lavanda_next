@@ -49,6 +49,16 @@ const Footer = () => {
               </Link>
             </li>
           )}
+          {user?.role === "admin" && (
+            <li className={styles['footer-navbar-list-item']}>
+              <Link
+                className={styles['footer-navbar-list-item-link']}
+                href="/addClass"
+              >
+                Додати заняття
+              </Link>
+            </li>
+          )}
           {/* <li className={styles['footer-navbar-list-item']}>
             <Link
               className={styles['footer-navbar-list-item-link']}

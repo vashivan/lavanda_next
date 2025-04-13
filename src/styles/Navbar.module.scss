@@ -39,11 +39,11 @@
   justify-content: center;
   align-items: center;
 
-  &_link{
-    &_red {
-    color: rgb(189, 6, 6);
-  }
-}
+//   &_link{
+//     &_red {
+//     color: rgb(189, 6, 6);
+//   }
+// }
 
   &>a {
     text-decoration: none;
@@ -85,8 +85,8 @@
     &_red {
       min-height: 64px;
       min-width: 64px;
-      color: rgb(189, 6, 6);
-      fill: rgb(189, 6, 6);
+      color: #4C266A;
+      fill:#4C266A;
     }
   }
 
@@ -162,14 +162,14 @@
     transition: none;
   }
 
-  &_red {
-    color: rgb(189, 6, 6);
-    border-color: rgb(189, 6, 6);
+  // &_red {
+  //   color: rgb(189, 6, 6);
+  //   border-color: rgb(189, 6, 6);
 
-    &:hover {
-      background-color: rgb(189, 6, 6);
-    }
-  }
+  //   &:hover {
+  //     background-color: rgb(189, 6, 6);
+  //   }
+  // }
 }
 
 .end_session {

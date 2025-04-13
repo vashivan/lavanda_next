@@ -184,7 +184,7 @@ export default function BookPage() {
                   {isLoading ? (
                     <MiniLoader />
                   )
-                    : (` Забронювати`)
+                    : (`Забронювати`)
                   }
                 </button>
               </li>

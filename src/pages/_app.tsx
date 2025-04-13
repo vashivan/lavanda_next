@@ -9,7 +9,6 @@ import Footer from '../Components/Footer/Footer';
 import StartPage from '../Components/StartPage/StartPage';
 import { StudioProvider } from '../context/StudioContext';
 import { AuthProvider } from '../context/AuthContext';
-import RegistrationPage from '../Components/RegistrationPage/RegistrationPage';
 
 const titleMap: Record<string, string> = {
   '/': 'Моя сторінка | Lavanda Studio',
@@ -18,6 +17,8 @@ const titleMap: Record<string, string> = {
   '/bookPage': 'Запис на заняття | Lavanda Studio',
   '/newsPage': 'Наші новини | Lavanda Studio',
   '/createUser': 'Реєстрація клієнта | Lavanda Studio',
+  '/addClass': 'Додати заняття | Lavanda Studio',
+  '/adminBookPage': 'Записати учня | Lavanda Studio'
 };
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -85,10 +86,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     try {
       const response = await fetch("/api/auth/logout", { method: "POST" });
       if (!response.ok) throw new Error("Помилка виходу");
-
       localStorage.removeItem("token");
-
-      // Опціонально: редірект на головну сторінку
       window.location.href = "/";
     } catch (error) {
       console.error("Помилка при виході:", error);

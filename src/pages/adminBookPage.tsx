@@ -24,7 +24,7 @@ interface User {
 }
 
 export default function AdminBookPage() {
-  const { studio } = useStudio();
+  const { studio, toggleStudio } = useStudio();
   const { user } = useAuth();
   const todayDay = new Date().toISOString().split('T')[0];
   const [schedule, setSchedule] = useState<ScheduleItem[]>([]);
@@ -35,6 +35,7 @@ export default function AdminBookPage() {
   const [selectedClass, setSelectedClass] = useState<ScheduleItem | null>(null);
   const [loading, setLoading] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [loadingId, setLoadingId] = useState<string | null>(null);
   const [infoMsg, setInfoMsg] = useState("");
 
   const isLavandaRed = studio === "lavanda_red";
@@ -115,7 +116,7 @@ export default function AdminBookPage() {
 
   const handleBooking = async (userId: string, userName: string, userEmail: string, userPhone: string) => {
     const updatedBookingData = {
-      name: userName|| "",
+      name: userName || "",
       email: userEmail || "",
       phone: userPhone || "",
       studio: studio || "",
@@ -125,7 +126,7 @@ export default function AdminBookPage() {
       studentId: userId
     };
 
-    setIsLoading(true);
+    setLoadingId(userId);
     try {
       const res = await fetch("/api/book", {
         method: "POST",
@@ -145,7 +146,7 @@ export default function AdminBookPage() {
     } catch (error) {
       setInfoMsg("Помилка з'єднання. Спробуйте ще раз.");
     } finally {
-      setIsLoading(false);
+      setLoadingId(null);
       setTimeout(() => {
         setInfoMsg('');
       }, 4000);
@@ -176,6 +177,18 @@ export default function AdminBookPage() {
         <h2 className={`${isLavandaRed ? styles.container_title_red : styles.container_title}`}>
           {isLavandaRed ? (`Lavanda Red`) : (`Lavanda Purple`)}
         </h2>
+        <button
+          className={`${styles.toggle_studio} ${isLavandaRed ? styles.toggle_studio_red : ''}`}
+          onClick={() => {
+            toggleStudio();
+          }}
+        >
+          {isLavandaRed ?
+            (<p>Змінити на Lavanda Purple</p>)
+            :
+            (<p>Змінити на Lavanda Red</p>)
+          }
+        </button>
         <div className={styles["date-buttons"]}>
           {generateNextFiveDays().map((date, index) => (
             <button
@@ -216,7 +229,7 @@ export default function AdminBookPage() {
                   className={`${styles.item_book_btn} ${isLavandaRed ? styles.item_book_btn_red : ""}`}
                   onClick={() => openBookingModal(item)}
                 >
-                  {isLoading ? <MiniLoader /> : 'Записати учня'}
+                  Записати учня
                 </button>
 
                 {modalOpen && (
@@ -245,8 +258,9 @@ export default function AdminBookPage() {
                             <button
                               className={`${styles.list_item_btn} ${isLavandaRed ? styles.list_item_btn_red : ''}`}
                               onClick={() => handleBooking(u.id, u.name, u.email, u.phone)}
+                              disabled={u.availablecl === 0}
                             >
-                              {u.name}
+                              {loadingId === u.id ? <MiniLoader /> : u.name}
                             </button>
                           </li>
                         ))}
