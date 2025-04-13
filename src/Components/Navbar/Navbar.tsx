@@ -20,7 +20,7 @@ const Navbar: React.FC<Props> = ({ handleLogout }) => {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-  };  
+  };
 
   return (
     <nav className={styles.navbar}>
@@ -56,18 +56,28 @@ const Navbar: React.FC<Props> = ({ handleLogout }) => {
             </Link>
           </li>
         ) : (
-        <li className={styles.navbarListItem}>
-          <Link
-            className={isLavandaRed ? styles.navbarListItem_link_red : ""}
-            href="/bookPage"
-          >
-            Запис на заняття
-          </Link>
-        </li>
+          <li className={styles.navbarListItem}>
+            <Link
+              className={isLavandaRed ? styles.navbarListItem_link_red : ""}
+              href="/bookPage"
+            >
+              Запис на заняття
+            </Link>
+          </li>
+        )}
+        {user?.role === "admin" && (
+          <li className={styles.navbarListItem}>
+            <Link
+              className={isLavandaRed ? styles.navbarListItem_link_red : ""}
+              href="/addClass"
+            >
+              Додати заняття
+            </Link>
+          </li>
         )}
         <li>
           <button className={styles.end_session} onClick={handleLogout}>
-          <LogOut size={20} /> Вийти
+            <LogOut size={20} /> Вийти
           </button>
         </li>
       </ul>

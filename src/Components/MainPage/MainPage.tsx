@@ -34,12 +34,12 @@ const MainPage: React.FC = () => {
   });
 
   useEffect(() => {
+    setLoading(true);
     fetch("/api/users")
       .then((res) => res.json())
       .then((data) => {
         // console.log("Отримані користувачі:", data);
         // Трансформуємо API-відповідь під очікуваний формат
-        setLoading(true);
         const transformedUsers = data.map((u: any) => ({
           id: u.id, // Перетворюємо id у string, якщо потрібно
           name: u.student_name,

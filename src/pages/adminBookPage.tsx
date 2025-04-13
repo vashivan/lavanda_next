@@ -40,12 +40,6 @@ export default function AdminBookPage() {
   const isLavandaRed = studio === "lavanda_red";
 
   useEffect(() => {
-    if (user?.availablecl === 0) {
-      setInfoMsg('На вашому балансі немає занять. Поповніть ваш баланс, щоб мати змогу відвідувати студію');
-    }
-  }, [user]);
-
-  useEffect(() => {
     fetch("/api/schedule")
       .then((res) => res.json())
       .then((data) => {
@@ -221,7 +215,6 @@ export default function AdminBookPage() {
                 <button
                   className={`${styles.item_book_btn} ${isLavandaRed ? styles.item_book_btn_red : ""}`}
                   onClick={() => openBookingModal(item)}
-                  disabled={item.available_spots === 0 || user?.availablecl === 0}
                 >
                   {isLoading ? <MiniLoader /> : 'Записати учня'}
                 </button>

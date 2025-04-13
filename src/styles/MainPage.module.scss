@@ -115,34 +115,30 @@
 }
 
 .page_container {
-  padding-inline: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  // width: 100%;
+  width: auto;
 }
 
 .students_container {
-  padding-inline: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: fit-content;
 
 
   @media (min-width: 1000px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 70px;
+    column-gap: 45px;
     row-gap: 30px;
   }
 }
 
 .students_search {
-  width: 80%;
+  width: 100%;
   height: 2rem;
   padding-inline: 15px;
   border: none;
@@ -158,7 +154,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  width: 60%;
+  width: 80%;
 
   input {
     width: 100%;
@@ -183,6 +179,9 @@
   padding: 50px;
   align-items: center;
   justify-content: center;
+
+  min-height: 220px;
+  min-width: 60vw;
 }
 
 @keyframes appear {
